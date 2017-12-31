@@ -374,6 +374,7 @@ init([undefined, Parent, MqttOpts, TcpOpts]) ->
 init([Name, Parent, MqttOpts, TcpOpts]) ->
 
     process_flag(trap_exit, true),
+    process_flag(message_queue_data, off_heap),
 
     Logger = gen_logger:new(get_value(logger, MqttOpts, {console, debug})),
 

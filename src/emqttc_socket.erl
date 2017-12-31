@@ -189,6 +189,7 @@ sockname_s(Sock) ->
 %%%=============================================================================
 
 receiver(ClientPid, Socket) ->
+    process_flag(message_queue_data, off_heap),
     receiver_activate(ClientPid, Socket, emqttc_parser:new()).
 
 receiver_activate(ClientPid, Socket, ParseState) ->
