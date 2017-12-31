@@ -493,7 +493,7 @@ waiting_for_connack(?CONNACK_PACKET(?CONNACK_ACCEPT), State = #state{
             {next_state, connected, State#state{proto_state = ProtoState1,
                                                 keepalive = KeepAlive1,
                                                 connack_tref = undefined,
-                                                pending_pubsub = []}};
+                                                pending_pubsub = []}, hibernate};
         {error, Error} ->
             {stop, {shutdown, Error}, State}
     end;
