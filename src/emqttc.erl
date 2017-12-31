@@ -686,7 +686,7 @@ connected({Pid, ping}, From, State = #state{ping_reqs = PingReqs, proto_state = 
         false ->
             [{From, erlang:monitor(process, Pid)} | PingReqs]
     end,
-    {next_state, connected, State#state{ping_reqs = PingReqs1}};
+    {next_state, connected, State#state{ping_reqs = PingReqs1}, hibernate};
 
 connected(Event, _From, State = #state{name = Name, logger = Logger}) ->
     Logger:error("[Client ~s] Unexpected Sync Event when connected: ~p", [Name, Event]),
